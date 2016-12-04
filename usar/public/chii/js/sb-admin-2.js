@@ -66,7 +66,18 @@ var dict = {};
     if (!userId) return;
     $('#profile-name').text(dict[userId].name + '\'s Health Status');
     $('#mapnav-btn').attr('href', 'map-navigate#' + userId);
+
   };
   $(window).on('hashchange', ctrl);
   $(window).on('load', ctrl);
+  $('#search-input').on('input', function(e){
+    var input = $('#search-input').val();
+    var re = new RegExp(input, "i");
+    for(var i = 1; i <= 4; i++){
+      if (dict[i].name.match(re))
+        $('#name-list-' + i).show();
+      else
+        $('#name-list-' + i).hide();
+    }
+  });
 })();

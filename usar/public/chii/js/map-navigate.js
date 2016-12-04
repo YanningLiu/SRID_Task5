@@ -27,7 +27,6 @@ function createMarker(map, id, name, lat, lng, tel){
   });
   marker.addListener('click', function() {
     Object.keys(dict).forEach(function(key){
-      console.log(key);
       dict[key].infowindow.close();
     });
     infowindow.open(map, marker);
@@ -50,6 +49,9 @@ function initMap() {
 }
 
 (function(){
+  data.forEach(function(d){
+    dict[d.id] = d;
+  });
   var ctrl = function(){
     var userId = location.hash.slice(1);
     if (!userId) return;
@@ -57,4 +59,14 @@ function initMap() {
   };
   $(window).on('hashchange', ctrl);
   $(window).on('load', ctrl);
+  $('#search-input').on('input', function(e){
+    var input = $('#search-input').val();
+    var re = new RegExp(input, "i");
+    for(var i = 1; i <= 4; i++){
+      if (dict[i].name.match(re))
+        $('#name-list-' + i).show();
+      else
+        $('#name-list-' + i).hide();
+    }
+  });
 })();
