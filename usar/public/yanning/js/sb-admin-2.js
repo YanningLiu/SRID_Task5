@@ -65,19 +65,36 @@ var dict = {};
   data.forEach(function(d){
     dict[d.id] = d;
   });
+
   var ctrl = function(){
     var userId = location.hash.slice(1);
     if (!userId) return;
-    $('#profile-name').text('In a call with ' + dict[userId].name);
-    //$('#mapnav-btn').attr('href', 'map-navigate#' + userId);
-    //$('#morris-area-chart').empty();
-    //selectData(userId);
-    if (true) {
-      $('#noti-good').show();
+    $('#profile-name').text(dict[userId].name + ' Channel');
+    $('#noti-good').show();
+    if (userId != 1) {
+      $('#leaderchat').hide();
+    } else {
+      $('#leaderchat').show();
     }
   };
+
+  var init = function(){
+    ctrl();
+    $('#endcall-btn').hide();
+  };
+
+  $("#voicecall-btn").click(function() {
+    $('#voicecall-btn').hide();
+    $('#endcall-btn').show();
+  });
+
+  $("#endcall-btn").click(function() {
+    $('#endcall-btn').hide();
+    $('#voicecall-btn').show();
+  });
+
   $(window).on('hashchange', ctrl);
-  $(window).on('load', ctrl);
+  $(window).on('load', init);
   $('#search-input').on('input', function(e){
     var input = $('#search-input').val();
     var re = new RegExp(input, "i");
