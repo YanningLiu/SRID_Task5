@@ -45,3 +45,28 @@ $(function() {
         }
     }
 });
+
+// my part
+
+var data = [
+  { id: 1, name: 'Chi-I', lat: 37.408, lng: -122.06, tel: '650-761-2444' },
+  { id: 2, name: 'Gaurav', lat: 37.400, lng: -122.08, tel: '650-761-2444' },
+  { id: 3, name: 'Harpreet', lat: 37.395, lng: -122.06, tel: '650-761-2444' },
+  { id: 4, name: 'Yanning', lat: 37.405, lng: -122.08, tel: '650-761-2444' },
+];
+
+var dict = {};
+
+(function(){
+  data.forEach(function(d){
+    dict[d.id] = d;
+  });
+  var ctrl = function(){
+    var userId = location.hash.slice(1);
+    if (!userId) return;
+    $('#profile-name').text(dict[userId].name + '\'s Health Status');
+    $('#mapnav-btn').attr('href', 'map-navigate#' + userId);
+  };
+  $(window).on('hashchange', ctrl);
+  $(window).on('load', ctrl);
+})();
