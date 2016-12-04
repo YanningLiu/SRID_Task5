@@ -2,6 +2,7 @@ function createMarker(map, name, lat, lng, tel){
   var contentString = '<div id="content">'+
       '<div id="bodyContent">'+
       '<p><b>' + name + '</b></p>'+
+      '<p><b><i class="fa fa-heartbeat fa-fw"></i></b><a href="/chii#' + name + '">' + name + '\'s health status</a></p>' +
       '<p><b><i class="fa fa-phone fa-fw"></i></b><a href="tel:' + tel + '">' + tel + '</a></p>' +
       '<p><b><i class="fa fa-map-marker fa-fw"></i></b><a href="https://maps.google.com?saddr=Current+Location&daddr=' + lat + ',' + lng + '">Direction</p>' +
       '</div>'+
