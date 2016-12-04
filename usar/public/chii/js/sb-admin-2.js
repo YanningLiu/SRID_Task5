@@ -66,7 +66,15 @@ var dict = {};
     if (!userId) return;
     $('#profile-name').text(dict[userId].name + '\'s Health Status');
     $('#mapnav-btn').attr('href', 'map-navigate#' + userId);
-
+    $('#morris-area-chart').empty();
+    selectData(userId);
+    if (userId != 1) {
+      $('#noti-bad').hide();
+      $('#noti-good').show();
+    } else {
+      $('#noti-good').hide();
+      $('#noti-bad').show();
+    }
   };
   $(window).on('hashchange', ctrl);
   $(window).on('load', ctrl);
