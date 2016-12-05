@@ -9,10 +9,13 @@
       <link rel="icon" href="../../favicon.ico">
       <title>US&R Responder System</title>
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false" 
+         type="text/javascript"></script> 
    </head>
    <body>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container">
             <div class="navbar-header">
                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                <span class="sr-only">Toggle navigation</span>
@@ -20,7 +23,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="#">US&R System</a>
+               <a class="navbar-brand" href="#">US&R</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                <ul class="nav navbar-nav">
@@ -32,8 +35,9 @@
                </ul>
             </div>
             <!--/.nav-collapse -->
+         </div>
       </nav>
-      <form class="form-horizontal" onsubmit="window.alert('Call Out Submitted!');">
+      <form class="form-horizontal">
          <fieldset>
             <!-- Form Name -->
             <legend>Reach Out Form</legend>
@@ -42,64 +46,58 @@
             <div class="form-group">
                <label class="col-md-4 control-label" for="memberCount">Number of members needed</label>
                <div class="col-md-4">
-                  <select id="memberCount" name="memberCount" class="form-control">
-                     <option value="1">1</option>
-                     <option value="2">2</option>
-                  </select>
+                  <label class="col-md-8 control-label" style="color:red" for="memberCount">2</label>
                </div>
             </div>
             <!-- Select Basic -->
             <div class="form-group">
                <label class="col-md-4 control-label" for="timeWindow">How long do you need help?</label>
                <div class="col-md-4">
-                  <select id="timeWindow" name="timeWindow" class="form-control">
-                     <option value="10">10</option>
-                     <option value="20">20</option>
-                  </select>
+                  <label class="col-md-8 control-label" style="color:red" for="timeWindow">20 minutes</label>
                </div>
             </div>
             <!-- Textarea -->
             <div class="form-group">
                <label class="col-md-4 control-label" for="requestNote">Notes</label>
                <div class="col-md-4">                     
-                  <textarea class="form-control" id="requestNote" name="requestNote"></textarea>
-               </div>
-            </div>
-            <div class="form-group">
-               <label class="col-md-4 control-label" for="map">Location</label>
-               <div class="col-md-4" id="map" style="width:400px;height:400px;">        
+                  <label class="col-md-8 control-label" style="color:red" for="requestNote">Heavy rock here. Need an extra hand.</label>
                </div>
             </div>
             <!-- Button -->
             <div class="form-group">
                <label class="col-md-4 control-label" for="requestHelp"></label>
                <div class="col-md-4">
-                  <button id="requestHelp" name="requestHelp" class="btn btn-primary">Request</button>
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onclick="displayMap();">Navigate</button>
                </div>
             </div>
          </fieldset>
       </form>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title">Navigating to John!</h4>
+         </div>
+         <div id="map" class="modal-body" style="margin:auto; width: 400px; height: 300px"></div>
+      </div>
+      <script type="text/javascript"> 
+         function displayMap(){
+            var map = new GMap2(document.getElementById("map"));
+            var directions = new GDirections(map);
+         
+            directions.load("from:" + 37.4119291 + ", " +
+                -122.0590327 +
+                " to:" + 37.4106446 + "," +
+                -122.0598464, {
+                    getPolyline: true,
+                    getSteps: true
+                });        
+         }
+         
+      </script> 
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
-      <script>
-         function getLocation() {
-           if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition(showPosition);
-           } else {
-             alert("Geolocation is not supported by this browser.");
-           }
-         }
-         function showPosition(position) {
-           var lat = position.coords.latitude;
-           var lng = position.coords.longitude;
-         
-           var mapCanvas = document.getElementById("map");
-           var mapOptions = {
-             center: new google.maps.LatLng(lat, lng), zoom: 18
-           };
-           var map = new google.maps.Map(mapCanvas, mapOptions);
-         }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?callback=getLocation"></script>
    </body>
 </html>
