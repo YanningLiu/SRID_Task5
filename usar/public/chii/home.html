@@ -37,26 +37,43 @@
       <div class="container">
          <ul class="list-group">
             <li class="list-group-item">
-               <a href="reachout.html">Call out from John!</a>
+               <a href="reachout.html" data-toggle="modal" data-target="#myModal">Call out from John!</a>
                <span class="badge">new</span>
             </li>
             <li class="list-group-item">
                Weather : Rain starts in 10 minutes.
                <span class="badge"></span>
             </li>
-                        <li class="list-group-item">
+            <li class="list-group-item">
                Two more rescue dogs arriving at the site.
                <span class="badge"></span>
             </li>
-                        <li class="list-group-item">
+            <li class="list-group-item">
                Casualities found: 17 
                <span class="badge"></span>
             </li>
-                        <li class="list-group-item">
+            <li class="list-group-item">
                Rush to patio for a short briefing.
                <span class="badge"></span>
             </li>
          </ul>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">John, reaching out!</h4>
+         </div>
+         <div class="modal-body">
+            <p>Heavy rock! Need an extra hand - John</p>
+            <a href="reachout-response.html">More Details</a>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
       </div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
