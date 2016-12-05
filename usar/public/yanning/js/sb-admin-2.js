@@ -71,6 +71,8 @@ var dict = {};
     if (!userId) return;
     $('#profile-name').text(dict[userId].name + ' Channel');
     $('#noti-good').show();
+    $('#imagechat').hide();
+    $('#videochat').hide();
     if (userId != 1) {
       $('#leaderchat').hide();
     } else {
@@ -80,17 +82,44 @@ var dict = {};
 
   var init = function(){
     ctrl();
+    $('#volumeup-btn').hide();
+    $('#volumedown-btn').hide();
     $('#endcall-btn').hide();
   };
 
   $("#voicecall-btn").click(function() {
     $('#voicecall-btn').hide();
     $('#endcall-btn').show();
+    $('#volumeup-btn').show();
+    $('#volumedown-btn').show();
   });
 
   $("#endcall-btn").click(function() {
     $('#endcall-btn').hide();
+    $('#volumeup-btn').hide();
+    $('#volumedown-btn').hide();
     $('#voicecall-btn').show();
+  });
+
+  var imageSelector = $('<input type="file">');
+  var videoSelector = $('<input type="file">');
+
+  $("#sendimage-btn").click(function() {
+    imageSelector.click();
+    imageSelector.change(function(e) {
+      $('#imagechat').show();
+    });
+  });
+
+  $("#sendvideo-btn").click(function() {
+    videoSelector.click();
+    videoSelector.change(function(e) {
+      $('#videochat').show();
+    });
+  });
+
+  $("#btn-chat").click(function() {
+    $("#btn-input").val('');
   });
 
   $(window).on('hashchange', ctrl);
