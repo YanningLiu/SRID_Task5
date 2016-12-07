@@ -1,6 +1,10 @@
 # US&R Responder System
 
 ##Technology stack used.
+- nodejs (Backend)
+- express (Web Framework)
+- bootstrap (Responsive CSS)
+- swagger (REST documentation)
 
 ##Link to your Style Guide
 
