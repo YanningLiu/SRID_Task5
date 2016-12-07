@@ -1,0 +1,190 @@
+# this is an example of the USAR API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: USAR API
+  description: Move your app forward with the USAR API
+  version: "1.0.0"
+# the domain of the service
+host: api.usar-cmusv.edu
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /rescuers:
+    get:
+      summary: Rescuer Types
+      description: |
+        The Rescuer endpoint returns information about the *USAR* rescuers
+        nearby a given location. The response includes the display name
+        and other details about each rescuer, and lists the rescuers in the
+        proper display order.
+      parameters:
+        - name: latitude
+          in: query
+          description: Latitude component of location.
+          required: true
+          type: number
+          format: double
+        - name: longitude
+          in: query
+          description: Longitude component of location.
+          required: true
+          type: number
+          format: double
+      tags:
+        - Rescuers
+      responses:
+        200:
+          description: An array of rescuers
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rescuer'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /rescuers/{rescuer_id}:
+    get:
+      summary: Rescuer Types
+      description: |
+        The Rescuer endpoint returns information about the *USAR* rescuers
+        by Rescuer ID. The response includes the display name
+        and other details about each rescuer, and lists the rescuers in the
+        proper display order.
+      parameters:
+        - name: rescuer_id
+          in: path
+          description: Unique identifier of rescuer
+          required: true
+          type: string
+      tags:
+        - Rescuers
+      responses:
+        200:
+          description: Rescuer information
+          schema:
+            $ref: '#/definitions/Rescuer'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /rescuers/{rescuer_id}/history:
+    get:
+      summary: Rescuer Types
+      description: |
+        The History endpoint returns health monitor hisotry about
+        the *USAR* rescuers by Rescuer ID. The response includes
+        a list of health history records.
+      parameters:
+        - name: rescuer_id
+          in: path
+          description: Unique identifier of rescuer
+          required: true
+          type: string
+      tags:
+        - Rescuers
+      responses:
+        200:
+          description: An array of history records
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/History'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /rescuers/{rescuer_id}/pulse:
+    get:
+      summary: Rescuer Types
+      description: |
+        The Pulse endpoint returns pulse hisotry about
+        the *USAR* rescuers by Rescuer ID. The response includes
+        a list of pulse records.
+      parameters:
+        - name: rescuer_id
+          in: path
+          description: Unique identifier of rescuer
+          required: true
+          type: string
+      tags:
+        - Rescuers
+      responses:
+        200:
+          description: An array of pulse records
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Pulse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Rescuer:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier representing a specific rescuer.
+      description:
+        type: string
+        description: Description of rescuer.
+      display_name:
+        type: string
+        description: Display name of rescuer.
+      latitude:
+        type: number
+        format: double
+        description: Latitude of current location of rescuer.
+      longitude:
+        type: number
+        format: double
+        description: Longitude of current location of rescuer.
+      phone:
+        type: string
+        description: Phone number of rescuer
+  History:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier representing a specific history.
+      description:
+        type: string
+        description: Description of history record.
+      severity_level:
+        type: string
+        description: Severity level of history record.
+        enum: ['normal', 'warning', 'danger']
+      timestamp:
+        type: string
+        format: date-time
+        description: Timestamp of history record.
+  Pulse:
+    type: object
+    properties:
+      bpm:
+        type: number
+        format: double
+        description: Beat-per-minute within an interval.
+      timestamp:
+        type: string
+        format: date-time
+        description: Timestamp of recorded pulse.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
