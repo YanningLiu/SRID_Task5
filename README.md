@@ -13,7 +13,8 @@ https://srid-usar.herokuapp.com/chii/
 https://docs.google.com/a/west.cmu.edu/presentation/d/1W8wy5oC68DmjF5X5yf00RtyPGFJCBfB-W48YgzYgnCs/edit?usp=sharing
 
 ##Link to your Style Guide
-https://github.com/YanningLiu/SRID_Task5/blob/master/public/chii/styleguide.html
+Live: https://srid-usar.herokuapp.com/chii/styleguide.html
+- Or, download: https://github.com/YanningLiu/SRID_Task5/blob/master/public/chii/styleguide.html
 
 ##Link to your API Requirements
 https://github.com/YanningLiu/SRID_Task5/blob/master/swagger.yaml
