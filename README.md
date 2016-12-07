@@ -21,3 +21,7 @@ https://github.com/YanningLiu/SRID_Task5/blob/master/usar/swagger.yaml
 - The APIs in the node backend have hard-coded data and fields.
 - The geo-location in the app is also set to already specified coordinates.
 
+##Acknowledgements:
+---------------------------------------------------------
+Professor Cécile Péraire and the teaching staff of 18-658,
+Software Requirements & Interaction Design, at Carnegie Mellon University, Fall 2016.
