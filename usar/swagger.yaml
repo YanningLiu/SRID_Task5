@@ -15,6 +15,46 @@ basePath: /v1
 produces:
   - application/json
 paths:
+
+  /reachOutRequests:
+    get:
+      summary: Get Reach Out Requests
+      description: |
+        This GET request returns all the Reach Out requests made by the rescuers. The output is primarily used to render these requests on the Alerts page.
+      tags:
+        - ReachOut
+      responses:
+        200:
+          description: An array of ReachOutRequests
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ReachOutRequest'
+        default:
+          description: 'US&R Interval Server Error'
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Add New Reach Out Request
+      description: |
+        This POST request adds a new Reach Out request to the server. These requests can later be used to display the alerts page, and notify other rescuers.
+      tags:
+        - ReachOut
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      parameters:
+        - name: reporter
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ReachOutRequest'
+      responses:
+        200:
+          description: Success
+        500:
+          description: Error (Missing Input Fields)
   /rescuers:
     get:
       summary: Rescuer Types
@@ -127,6 +167,27 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 definitions:
+
+  ReachOutRequest:
+    type: object
+    properties:
+      reporter:
+        type: string
+        description: Name of the rescuer who submitted the request.
+      nMembers:
+        type: number
+        description: Number of rescuers requested for reach out.
+      timeWindow:
+        type: number
+        description: The time (in minutes) expected for the rescuers to put in, for this request.
+      notes:
+        type: string
+        description: Detailed description of the request scenario.
+      location:
+        type: string
+        format: json
+        description: JSON string of Latitude and Longitude
+        
   Rescuer:
     type: object
     properties:
