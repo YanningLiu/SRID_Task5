@@ -11,11 +11,140 @@ host: api.usar-cmusv.edu
 schemes:
   - https
 # will be prefixed to all paths
-basePath: /v1
+basePath: /
 produces:
   - application/json
 paths:
-
+  /communication/getChannels:
+    get:
+      summary: Communication Channels
+      description: |
+        The Channels endpoint returns information about the all the team members that the current user can communicate with. The response could also contain group communication channels. The reponse information include name of each communication channel (person's name/person's title/group name).
+      parameters:
+        - name: username
+          in: query
+          description: unique username of the current user
+          required: true
+          type: string
+      tags:
+        - Channels
+      responses:
+        '200':
+          description: An array of channels
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Channel'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /communication/getMessages:
+    get:
+      summary: Communication History
+      description: >
+        The Communication History endpoint returns all the communication records between two people stored in the system. The communication history could include text messages, video files, image files, voice call recordings. The response information contains sender, receiver, timestamp of each record. For text messages, response contains their content, while for image/video files, response contains its Base64 representation.
+      parameters:
+        - name: username
+          in: query
+          description: unique username of the current user.
+          required: true
+          type: string
+        - name: othername
+          in: query
+          description: username of the other person.
+          required: true
+          type: string
+        - name: startTime
+          in: query
+          description: start time of the records.
+          required: false
+          type: string
+          format: date-time
+        - name: endTime
+          in: query
+          description: end time of the records.
+          required: false
+          type: string
+          format: date-time
+      tags:
+        - Messages
+      responses:
+        '200':
+          description: An array of messages between the two users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Message'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /communication/postMessages:
+    post:
+      summary: Send Message
+      description: >-
+        The Send Message endpoint stores a new message into the server. The Message contains information regarding sender, receiver, timestamp and possibly text, images, videos. Message is in JSON format during transferring. Images and videos are represented by its Base64 encoding.
+      parameters:
+        - name: content
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Message'
+          description: content of the message.
+      tags:
+        - Messages
+      responses:
+        '201':
+          description: Message has been stored successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /communication/getNotifications:
+    get:
+      summary: Notification from Teammates
+      description: >-
+        The Notification endpoint returns information about the notifications sent from teammates. Notifications are to inform the rescuers of the new message/calls. They can also be used as communication history (e.g. at which time started a voice call with whom). It contains notification type (e.g. call, message), sender and timestamp. The notifications are returned in time order.
+      parameters:
+        - name: username
+          in: query
+          description: unique username of the current user
+          required: true
+          type: string
+      tags:
+        - Notification
+      responses:
+        '200':
+          description: An array of notifications for the current user
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Notification'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /communication/postNotifications:
+    post:
+      summary: Send Notifications
+      description: >-
+        The Notifications endpoint allows users to push notifications to others. The request body contains notification type (e.g. call, message), sender, receiver and timestamp. 
+      parameters:
+        - name: content
+          in: body
+          schema:
+            $ref: '#/definitions/Notification'
+          description: content of the notification.
+      tags:
+        - Notification
+      responses:
+        '201':
+          description: Notification has been stored successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /reachOutRequests:
     get:
       summary: Get Reach Out Requests
@@ -239,6 +368,65 @@ definitions:
         type: string
         format: date-time
         description: Timestamp of recorded pulse.
+  Channel:
+    type: object
+    properties:
+      channel_id:
+        type: integer
+        format: int32
+        description: >-
+          Unique identifier representing a Communication Channel.
+      channel_name:
+        type: string
+        description: Name of the communication channel, such as 'Team Leader'.
+
+  Message:
+    type: object
+    properties:
+      message_id:
+        type: integer
+        format: int32
+        description: >-
+          Unique identifier representing a message between two users
+      sender:
+        type: string
+        description: sender of the message.
+      receiver:
+        type: string
+        description: receiver of the message.
+      text:
+        type: string
+        description: text content of the image.
+      image:
+        type: string
+        description: Base64 encoded image.
+      video:
+        type: string
+        description: Base64 encoded video.
+      timestamp:
+        type: string
+        format: date-time
+        description: time when the message is sent.
+  Notification:
+    type: object
+    properties:
+      notification_id:
+        type: integer
+        format: int32
+        description: Unique identifier representing a notification
+      sender:
+        type: string
+        description: sender of the notification.
+      receiver:
+        type: string
+        description: receiver of the notification.
+      notification_type:
+        type: string
+        description: type of the notification (e.g. incoming call, new message)
+      timestamp:
+        type: string
+        format: date-time
+        description: time when the notification is sent.
   Error:
     type: object
     properties:
