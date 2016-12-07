@@ -6,8 +6,12 @@
 - bootstrap (Responsive CSS)
 - swagger (REST documentation)
 
+##Link to Live App
+https://srid-usar.herokuapp.com/chii/
+
 ##Link to your Style Guide
-https://github.com/YanningLiu/SRID_Task5/blob/master/usar/public/chii/styleguide.html
+- Live: https://srid-usar.herokuapp.com/chii/styleguide.html
+- Or, download: https://github.com/YanningLiu/SRID_Task5/blob/master/usar/public/chii/styleguide.html
 
 ##Link to your API Requirements
 https://github.com/YanningLiu/SRID_Task5/blob/master/usar/swagger.yaml
