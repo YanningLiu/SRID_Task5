@@ -24,6 +24,8 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
+      <script src="../lib/angular/angular.js"></script>
+      <script src="../controllers/digControlllers.js"></script>
    </head>
    <body>
       <!-- Fixed navbar -->
@@ -43,8 +45,8 @@
             <li role="presentation"><a href="/chii/map-navigate">Map Navigation</a></li>
             <li role="presentation"><a href="/chii">Health Monitor</a></li>
             <li role="presentation"><a href="/yanning/">Communication</a></li>
-            <li role="presentation" class="active"><a href="reachout.html">Reach Out</a></li>
-            <li role="presentation"><a href="dig.html">Digging</a></li>
+            <li role="presentation"><a href="reachout.html">Reach Out</a></li>
+            <li role="presentation" class="active"><a href="dig.html">Digging</a></li>
          </ul>
          <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
@@ -209,71 +211,50 @@
          <!-- /.navbar-static-side -->
       </nav>
       <div id="page-wrapper">
-         <div class="row">
+       <div class="row">
             <div class="col-lg-12">
                <p>
-               <h1 id="profile-name" style="display:inline">Reach Out to rescuers</h1>
+               <h1 id="profile-name" style="display:inline">Find The Best Digging Route</h1>
                </p>
             </div>
             <!-- /.col-lg-12 -->
          </div>
          <!-- /.row -->
          <div class="row">
-            <div class="col-lg-8">
-               <div class="panel panel-default">
-                  <form class="form-horizontal" onsubmit="window.alert('Call Out Submitted!');">
-                     <fieldset>
-                        <!-- Form Name -->
-                        <p></p>
-                        <!-- Select Basic -->
-                        <div class="form-group">
-                           <label class="col-md-4 control-label" for="memberCount">Number of members needed</label>
-                           <div class="col-md-4">
-                              <select id="memberCount" name="memberCount" class="form-control">
-                                 <option value="1">1</option>
-                                 <option value="2">2</option>
-                              </select>
-                           </div>
-                        </div>
-                        <!-- Select Basic -->
-                        <div class="form-group">
-                           <label class="col-md-4 control-label" for="timeWindow">How long do you need help?</label>
-                           <div class="col-md-4">
-                              <select id="timeWindow" name="timeWindow" class="form-control">
-                                 <option value="10">10</option>
-                                 <option value="20">20</option>
-                              </select>
-                           </div>
-                        </div>
-                        <!-- Textarea -->
-                        <div class="form-group">
-                           <label class="col-md-4 control-label" for="requestNote">Notes</label>
-                           <div class="col-md-4">                     
-                              <textarea class="form-control" id="requestNote" name="requestNote"></textarea>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <label class="col-md-4 control-label" for="map">Location</label>
-                           <div class="col-md-4" id="map" style="width:400px;height:400px;">  
+        <div ng-show="showMap">
+            <div id="areaMap" class="col-lg-8" ng-controller="AppCtrl" data-ng-init="init()">
+            <div class="panel panel-primary">
+             
+             			<label class="col-md-4 control-label" for="map">Select any building</label>
+             	           <div class="col-md-4" id="map" style="width:600px;height:400px;">  
                               <img src="http://i375.photobucket.com/albums/oo193/DerMeister02/Anime%20UL/loading.gif" style="width:128px;height:128px;">      
                            </div>
-                        </div>
-                        <!-- Button -->
-                        <div class="form-group">
-                           <label class="col-md-4 control-label" for="requestHelp"></label>
                            <div class="col-md-4">
-                              <button id="requestHelp" name="requestHelp" class="btn btn-primary">Request</button>
+                              <button id="clickOnMap" name="requestHelp" class="btn btn-primary" ng-click="clickOnMap()">Submit</button>
                            </div>
-                        </div>
-                     </fieldset>
-                  </form>
-                  <!-- /.panel-heading -->
-                  <div class="panel-body">
-                     <div id="morris-area-chart"></div>
-                  </div>
+                        
                   <!-- /.panel-body -->
                </div>
                <!-- /.panel -->
+            </div>
+            </div>
+            
+            <div ng-show="showMap">
+            <div id="areaBP" class="col-lg-8" ng-controller="AppCtrl" data-ng-init="init()">
+            <div class="panel panel-primary">
+             
+             			<label class="col-md-4 control-label" for="map">Blueprints and Suggested Routes</label>
+             	           <div class="col-md-4" style="width:600px;height:400px;">  
+                              <img src="../bestDiggingRoutes.png" style="width:600px;height:400px;">      
+                           </div>
+                           <div class="col-md-4">
+                              <button id="clickOnBack" name="requestHelp" class="btn btn-primary" ng-click="clickOnBack()">Back</button>
+                           </div>
+                        
+                  <!-- /.panel-body -->
+               </div>
+               <!-- /.panel -->
+            </div>
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-4">
@@ -405,6 +386,19 @@
            var map = new google.maps.Map(mapCanvas, mapOptions);
          }
       </script>
+      <script>
+	$(document).ready(function(){
+		$("#areaBP").hide();
+    $("#clickOnMap").click(function(){
+        $("#areaMap").hide();
+        $("#areaBP").show();
+    });
+    $("#clickOnBack").click(function(){
+        $("#areaBP").hide();
+        $("#areaMap").show();
+    });
+	});
+</script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5FvpOiPafON2wTpP9cxQHnff73QTStHw&callback=getLocation"></script>
-   </body>
+      </body>
 </html>
