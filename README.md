@@ -7,7 +7,7 @@
 - swagger (REST documentation)
 
 ##Link to your Style Guide
-https://github.com/YanningLiu/SRID_Task5/blob/master/usar/public/chii/styleguide2.html
+https://github.com/YanningLiu/SRID_Task5/blob/master/usar/public/chii/styleguide.html
 
 ##Link to your API Requirements
 https://github.com/YanningLiu/SRID_Task5/blob/master/usar/swagger.yaml
