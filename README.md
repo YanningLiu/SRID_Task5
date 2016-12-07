@@ -9,6 +9,9 @@
 ##Link to Live App
 https://srid-usar.herokuapp.com/chii/
 
+##Link to Final Presentation Slides
+https://docs.google.com/a/west.cmu.edu/presentation/d/1W8wy5oC68DmjF5X5yf00RtyPGFJCBfB-W48YgzYgnCs/edit?usp=sharing
+
 ##Link to your Style Guide
 - Live: https://srid-usar.herokuapp.com/chii/styleguide.html
 - Or, download: https://github.com/YanningLiu/SRID_Task5/blob/master/usar/public/chii/styleguide.html
