@@ -13,25 +13,25 @@
    <body>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               </button>
-               <a class="navbar-brand" href="#">US&R</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-               <ul class="nav navbar-nav">
-                  <li><a href="home.html">Alerts</a></li>
-                  <li><a href="/chii/map-navigate">Map Navigation</a></li>
-                  <li><a href="/chii">Health Monitor</a></li>
-                  <li><a href="/yanning">Communication</a></li>
-                  <li class="active"><a href="reachout.html">Reach Out</a></li>
-               </ul>
-            </div>
-            <!--/.nav-collapse -->
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">US&R</a>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+               <li><a href="home.html">Alerts</a></li>
+               <li><a href="/chii/map-navigate">Map Navigation</a></li>
+               <li><a href="/chii">Health Monitor</a></li>
+               <li><a href="/yanning">Communication</a></li>
+               <li class="active"><a href="reachout.html">Reach Out</a></li>
+            </ul>
+         </div>
+         <!--/.nav-collapse -->
       </nav>
       <form class="form-horizontal">
          <fieldset>
@@ -77,36 +77,35 @@
             <h4 class="modal-title">Navigating to John!</h4>
          </div>
          <div class="modal-body" style="margin:auto; ">
-           <img src="/data/map-directions.png" height="400px" width="400px">
+            <img src="/data/map-directions.png" height="400px" width="400px">
          </div>
       </div>
       <script type="text/javascript"> 
          function getDirection() {
              var map = new google.maps.Map(document.getElementById("map"));
-
+         
              var start = new google.maps.LatLng(37.4119291, -122.0590327);
              var end = new google.maps.LatLng(37.4106446, -122.0598464);
-
+         
              var directionsDisplay = new google.maps.DirectionsRenderer(); // also, constructor can get "DirectionsRendererOptions" object
              directionsDisplay.setMap(map); // map should be already initialized.
-
+         
              var request = {
                  origin: start,
                  destination: end,
                  travelMode: google.maps.DirectionsTravelMode.WALKING
              };
              var directionsService = new google.maps.DirectionsService();
-
+         
              directionsService.route(request, function(response, status) {
                  if (status == google.maps.DirectionsStatus.OK) {
                      directionsDisplay.setDirections(response);
                  }
              });
          }
-
+         
       </script> 
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5FvpOiPafON2wTpP9cxQHnff73QTStHw&callback=getDirection"></script>
-
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5FvpOiPafON2wTpP9cxQHnff73QTStHw&callback=getDirection"></script>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
    </body>

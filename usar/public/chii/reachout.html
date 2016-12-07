@@ -6,80 +6,383 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="author" content="">
-      <link rel="icon" href="../../favicon.ico">
       <title>US&R Responder System</title>
-      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap Core CSS -->
+      <!-- <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- MetisMenu CSS -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.6.0/metisMenu.min.css">
+      <!-- Custom CSS -->
+      <link href="/chii/css/sb-admin-2.css" rel="stylesheet">
+      <!-- Morris Charts CSS -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+      <!-- Custom Fonts -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
    </head>
    <body>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               </button>
-               <a class="navbar-brand" href="#">US&R System</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-               <ul class="nav navbar-nav">
-                  <li><a href="home.html">Alerts</a></li>
-                  <li><a href="/chii/map-navigate">Map Navigation</a></li>
-                  <li><a href="/chii">Health Monitor</a></li>
-                  <li><a href="/yanning">Communication</a></li>
-                  <li class="active"><a href="reachout.html">Reach Out</a></li>
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">US&amp;R System</a>
+         </div>
+         <!-- /.navbar-header -->
+         <ul class="nav navbar-nav">
+            <li role="presentation"><a href="home.html">Alerts</a></li>
+            <li role="presentation"><a href="/chii/map-navigate">Map Navigation</a></li>
+            <li role="presentation"><a href="/chii">Health Monitor</a></li>
+            <li role="presentation"><a href="/yanning/">Communication</a></li>
+            <li role="presentation" class="active"><a href="reachout.html">Reach Out</a></li>
+         </ul>
+         <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+               <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+               </a>
+               <ul class="dropdown-menu dropdown-messages">
+                  <li>
+                     <a href="#">
+                        <div>
+                           <strong>John Smith</strong>
+                           <span class="pull-right text-muted">
+                           <em>Yesterday</em>
+                           </span>
+                        </div>
+                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="#">
+                        <div>
+                           <strong>John Smith</strong>
+                           <span class="pull-right text-muted">
+                           <em>Yesterday</em>
+                           </span>
+                        </div>
+                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="#">
+                        <div>
+                           <strong>John Smith</strong>
+                           <span class="pull-right text-muted">
+                           <em>Yesterday</em>
+                           </span>
+                        </div>
+                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a class="text-center" href="#">
+                     <strong>Read All Messages</strong>
+                     <i class="fa fa-angle-right"></i>
+                     </a>
+                  </li>
+               </ul>
+               <!-- /.dropdown-messages -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+               <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+               </a>
+               <ul class="dropdown-menu dropdown-alerts">
+                  <li>
+                     <a href="#">
+                        <div>
+                           <i class="fa fa-comment fa-fw"></i> New Comment
+                           <span class="pull-right text-muted small">4 minutes ago</span>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="#">
+                        <div>
+                           <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                           <span class="pull-right text-muted small">12 minutes ago</span>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="#">
+                        <div>
+                           <i class="fa fa-envelope fa-fw"></i> Message Sent
+                           <span class="pull-right text-muted small">4 minutes ago</span>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="#">
+                        <div>
+                           <i class="fa fa-tasks fa-fw"></i> New Task
+                           <span class="pull-right text-muted small">4 minutes ago</span>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="#">
+                        <div>
+                           <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                           <span class="pull-right text-muted small">4 minutes ago</span>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a class="text-center" href="#">
+                     <strong>See All Alerts</strong>
+                     <i class="fa fa-angle-right"></i>
+                     </a>
+                  </li>
+               </ul>
+               <!-- /.dropdown-alerts -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+               <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+               </a>
+               <ul class="dropdown-menu dropdown-user">
+                  <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                  </li>
+                  <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                  </li>
+               </ul>
+               <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+         </ul>
+         <!-- /.navbar-top-links -->
+         <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+               <ul class="nav" id="side-menu">
+                  <li class="sidebar-search">
+                     <div class="input-group custom-search-form">
+                        <input id="search-input" type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                        </button>
+                        </span>
+                     </div>
+                     <!-- /input-group -->
+                  </li>
+                  <li id="name-list-1">
+                     <a href="#1"><i class="fa fa-user fa-fw"></i> Chi-I</a>
+                  </li>
+                  <li id="name-list-2">
+                     <a href="#2"><i class="fa fa-user fa-fw"></i> Gaurav</a>
+                  </li>
+                  <li id="name-list-3">
+                     <a href="#3"><i class="fa fa-user fa-fw"></i> Harpreet</a>
+                  </li>
+                  <li id="name-list-4">
+                     <a href="#4"><i class="fa fa-user fa-fw"></i> Yanning</a>
+                  </li>
                </ul>
             </div>
-            <!--/.nav-collapse -->
+            <!-- /.sidebar-collapse -->
+         </div>
+         <!-- /.navbar-static-side -->
       </nav>
-      <form class="form-horizontal" onsubmit="window.alert('Call Out Submitted!');">
-         <fieldset>
-            <!-- Form Name -->
-            <legend>Reach Out Form</legend>
-            <p></p>
-            <!-- Select Basic -->
-            <div class="form-group">
-               <label class="col-md-4 control-label" for="memberCount">Number of members needed</label>
-               <div class="col-md-4">
-                  <select id="memberCount" name="memberCount" class="form-control">
-                     <option value="1">1</option>
-                     <option value="2">2</option>
-                  </select>
-               </div>
+      <div id="page-wrapper">
+         <div class="row">
+            <div class="col-lg-12">
+               <p>
+               <h1 id="profile-name" style="display:inline">Reach Out to rescuers</h1>
+               </p>
             </div>
-            <!-- Select Basic -->
-            <div class="form-group">
-               <label class="col-md-4 control-label" for="timeWindow">How long do you need help?</label>
-               <div class="col-md-4">
-                  <select id="timeWindow" name="timeWindow" class="form-control">
-                     <option value="10">10</option>
-                     <option value="20">20</option>
-                  </select>
+            <!-- /.col-lg-12 -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+            <div class="col-lg-8">
+               <div class="panel panel-default">
+                  <form class="form-horizontal" onsubmit="window.alert('Call Out Submitted!');">
+                     <fieldset>
+                        <!-- Form Name -->
+                        <p></p>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                           <label class="col-md-4 control-label" for="memberCount">Number of members needed</label>
+                           <div class="col-md-4">
+                              <select id="memberCount" name="memberCount" class="form-control">
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                              </select>
+                           </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                           <label class="col-md-4 control-label" for="timeWindow">How long do you need help?</label>
+                           <div class="col-md-4">
+                              <select id="timeWindow" name="timeWindow" class="form-control">
+                                 <option value="10">10</option>
+                                 <option value="20">20</option>
+                              </select>
+                           </div>
+                        </div>
+                        <!-- Textarea -->
+                        <div class="form-group">
+                           <label class="col-md-4 control-label" for="requestNote">Notes</label>
+                           <div class="col-md-4">                     
+                              <textarea class="form-control" id="requestNote" name="requestNote"></textarea>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-md-4 control-label" for="map">Location</label>
+                           <div class="col-md-4" id="map" style="width:400px;height:400px;">  
+                              <img src="http://i375.photobucket.com/albums/oo193/DerMeister02/Anime%20UL/loading.gif" style="width:128px;height:128px;">      
+                           </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="form-group">
+                           <label class="col-md-4 control-label" for="requestHelp"></label>
+                           <div class="col-md-4">
+                              <button id="requestHelp" name="requestHelp" class="btn btn-primary">Request</button>
+                           </div>
+                        </div>
+                     </fieldset>
+                  </form>
+                  <!-- /.panel-heading -->
+                  <div class="panel-body">
+                     <div id="morris-area-chart"></div>
+                  </div>
+                  <!-- /.panel-body -->
                </div>
+               <!-- /.panel -->
             </div>
-            <!-- Textarea -->
-            <div class="form-group">
-               <label class="col-md-4 control-label" for="requestNote">Notes</label>
-               <div class="col-md-4">                     
-                  <textarea class="form-control" id="requestNote" name="requestNote"></textarea>
+            <!-- /.col-lg-8 -->
+            <div class="col-lg-4">
+               <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                  </div>
+                  <!-- /.panel-heading -->
+                  <div id="noti-bad" class="panel-body">
+                     <div class="list-group">
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-comment fa-fw"></i> New Comment
+                        <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-hospital-o fa-fw"></i> Moved to X Hospital
+                        <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-ambulance fa-fw"></i> On ambulance
+                        <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-user-md fa-fw"></i> Rescue team on the way
+                        <span class="pull-right text-muted small"><em>11:32 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-warning fa-fw"></i> Life in danger!
+                        <span class="pull-right text-muted small"><em>11:13 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-heartbeat fa-fw"></i> Low heart detected
+                        <span class="pull-right text-muted small"><em>10:57 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-bolt fa-fw"></i> Detected high electicity
+                        <span class="pull-right text-muted small"><em>9:49 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>Yesterday</em>
+                        </span>
+                        </a>
+                     </div>
+                     <!-- /.list-group -->
+                     <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                  </div>
+                  <!-- /.panel-body -->
+                  <!-- /.panel-heading -->
+                  <div id="noti-good" class="panel-body" style="display:none">
+                     <div class="list-group">
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>11:32 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>11:13 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>10:57 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>9:49 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                        <i class="fa fa-check fa-fw"></i> Healthy
+                        <span class="pull-right text-muted small"><em>Yesterday</em>
+                        </span>
+                        </a>
+                     </div>
+                     <!-- /.list-group -->
+                     <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                  </div>
+                  <!-- /.panel-body -->
                </div>
+               <!-- /.panel .chat-panel -->
             </div>
-            <div class="form-group">
-               <label class="col-md-4 control-label" for="map">Location</label>
-               <div class="col-md-4" id="map" style="width:400px;height:400px;">  
-               <img src="http://i375.photobucket.com/albums/oo193/DerMeister02/Anime%20UL/loading.gif" style="width:128px;height:128px;">      
-               </div>
-            </div>
-            <!-- Button -->
-            <div class="form-group">
-               <label class="col-md-4 control-label" for="requestHelp"></label>
-               <div class="col-md-4">
-                  <button id="requestHelp" name="requestHelp" class="btn btn-primary">Request</button>
-               </div>
-            </div>
-         </fieldset>
-      </form>
+            <!-- /.col-lg-4 -->
+         </div>
+         <!-- /.row -->
+      </div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
       <script>
