@@ -13,7 +13,7 @@
       <!-- Bootstrap theme -->
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <!-- Custom styles for this template -->
-      <link href="http://getbootstrap.com/examples/theme/theme.css" rel="stylesheet">
+      <link href="//getbootstrap.com/examples/theme/theme.css" rel="stylesheet">
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
       <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
       <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -216,7 +216,47 @@
             <!-- /.col-sm-4 -->
             <!-- /.col-sm-4 -->
          </div>
+         <div class="page-header">
+            <h1>Map</h1>
+         </div>
+         <div class="row">
+            <div class="col-md-8">
+              <div id="map" style="height:600px"></div>
+            </div>
+         </div>
       </div>
+      <script>
+        function createMarker(map, id, name, lat, lng, tel){
+          var contentString = '<div id="content">'+
+              '<div id="bodyContent">'+
+              '<p><b>' + name + '</b></p>'+
+              '<p><b><i class="fa fa-heartbeat fa-fw"></i></b><a href="/chii#' + id + '">' + name + '\'s health status</a></p>' +
+              '<p><b><i class="fa fa-phone fa-fw"></i></b><a href="tel:' + tel + '">' + tel + '</a></p>' +
+              '<p><b><i class="fa fa-map-marker fa-fw"></i></b><a href="https://maps.google.com?saddr=Current+Location&daddr=' + lat + ',' + lng + '">Direction</p>' +
+              '</div>'+
+              '</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          var marker = new google.maps.Marker({
+            position: {lat: lat, lng: lng},
+            title: name,
+            map: map, 
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+          return marker;
+        }
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: {lat: 37.402, lng: -122.07}
+          });
+          createMarker(map, 1, 'Eric Bachman', 37.402, -122.07, '123-456-7890');
+        }
+      </script>
       <!-- /container -->
       <!-- Bootstrap core JavaScript
          ================================================== -->
@@ -227,6 +267,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <!-- <script src="file:///Users/walia-mac/Documents/cmu/workspace/prep/srid_task5/usar/assets/js/docs.min.js"></script> -->
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+      <script src="//getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+      <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyB5FvpOiPafON2wTpP9cxQHnff73QTStHw&callback=initMap"></script>
    </body>
 </html>
