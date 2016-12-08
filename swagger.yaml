@@ -145,6 +145,41 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /diggingRoute:
+    get:
+      summary: Digging Routes
+      description: |
+       The get digging route end point resopnds with the blue prints and suggested digging paths.
+      tags:
+        - DiggingRoutes
+      consumes:
+        - application/json
+      produces:
+        - text/html
+      parameters:
+        - name: latitude
+          in: query
+          description: Latitude component of location.
+          required: true
+          type: number
+          format: double
+        - name: longitude
+          in: query
+          description: Longitude component of location.
+          required: true
+          type: number
+          format: double
+      responses:
+        200:
+          description: image
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Message'
+        default:
+          description: 'US&R Interval Server Error'
+          schema:
+            $ref: '#/definitions/Error'
   /reachOutRequests:
     get:
       summary: Get Reach Out Requests
@@ -295,6 +330,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+
+   
 definitions:
 
   ReachOutRequest:
